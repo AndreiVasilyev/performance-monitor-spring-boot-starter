@@ -1,0 +1,3 @@
+performance-monitor:
+  is-present: true
+  min-execution-time: 100
