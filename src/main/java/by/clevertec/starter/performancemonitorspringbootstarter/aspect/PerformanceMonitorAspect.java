@@ -16,7 +16,8 @@ public class PerformanceMonitorAspect {
     private final long minExecutionTime;
 
     @Pointcut("@annotation(by.clevertec.starter.performancemonitorspringbootstarter.annotation.MonitorPerformance) ")
-    public void isMonitorPerformancePointcut() {}
+    public void isMonitorPerformancePointcut() {
+    }
 
     @Around("isMonitorPerformancePointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -25,7 +26,7 @@ public class PerformanceMonitorAspect {
             Object result = joinPoint.proceed();
             long endTime = System.currentTimeMillis();
             long elapsedTime = endTime - startTime;
-            if (elapsedTime>minExecutionTime) {
+            if (elapsedTime > minExecutionTime) {
                 log.info("Method {} executed in {} ms", joinPoint.getSignature().getName(), elapsedTime);
             }
             return result;

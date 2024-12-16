@@ -13,4 +13,9 @@ public class PerformanceMonitorAutoConfiguration {
     PerformanceMonitorAspect performanceMonitorAspect(PerformanceMonitorProperties performanceMonitorProperties) {
         return new PerformanceMonitorAspect(performanceMonitorProperties.isPresent(), performanceMonitorProperties.getMinExecutionTime());
     }
+
+    @Bean
+    PerformanceMonitorProperties performanceMonitorProperties() {
+        return new PerformanceMonitorProperties();
+    }
 }
